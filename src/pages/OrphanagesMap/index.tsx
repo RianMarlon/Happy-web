@@ -17,7 +17,7 @@ const mapIcon = Leaflet.icon({
   popupAnchor: [170, 2],
 });
 
-function OrphanagesList() {
+function OrphanagesMap() {
   return (
     <div id="page-map">
       <aside>
@@ -62,4 +62,4 @@ function OrphanagesList() {
   );
 }
 
-export default OrphanagesList;
+export default OrphanagesMap;
