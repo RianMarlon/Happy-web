@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 import { FiPlus, FiX } from 'react-icons/fi';
+import { toast, ToastContainer } from 'react-toastify';
 
 import api from '../../services/api';
 import useForm from '../../hooks/useForm';
@@ -96,12 +97,18 @@ function CreateOrphanage() {
         history.push('/app');
       })
       .catch(({ response }) => {
-        console.log(response.data.messagesError);
+        const data = response.data;
+        const messageError = data.messagesError[0];
+        
+        toast.error(messageError, {
+          autoClose: 5000
+        });
       });
   }
 
   return (
     <div id="page-create-orphanage">
+      <ToastContainer />
       <Sidebar />
 
       <main>
