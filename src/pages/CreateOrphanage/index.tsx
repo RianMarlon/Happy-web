@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiX } from 'react-icons/fi';
 
 import api from '../../services/api';
 import useForm from '../../hooks/useForm';
@@ -53,6 +53,24 @@ function CreateOrphanage() {
     }
   }
 
+  function handleRemoveImage(index: number) {
+    const newImages: File[] = [];
+
+    images.forEach((image, indexImage) => {
+      if (index !== indexImage) {
+        newImages.push(image);
+      }
+    });
+
+    setImages(newImages);
+
+    const newPreviewImages = newImages.map((image) => {
+      return URL.createObjectURL(image);
+    });
+
+    setPreviewImages(newPreviewImages);
+  }
+
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
@@ -76,6 +94,9 @@ function CreateOrphanage() {
       .then(() => {
         alert('Cadastro realizado com sucesso!');
         history.push('/app');
+      })
+      .catch(({ response }) => {
+        console.log(response.data.messagesError);
       });
   }
 
@@ -132,14 +153,21 @@ function CreateOrphanage() {
             <div className="input-block">
               <label htmlFor="images">Fotos</label>
               <div className="images-container">
-                { previewImages.map((image) => {
+                { previewImages.map((image, index) => {
                   return (
-                    <img key={image} src={image} />
+                    <div key={image} className="image-container">
+                      <button 
+                        onClick={() => handleRemoveImage(index)}
+                      >
+                        <FiX size={24} color="#FF669D" />
+                      </button>
+                      <img src={image} alt="" />
+                    </div>
                   )
                 })}
 
                 <label htmlFor="image" className="new-image">
-                  <FiPlus size={24} color="#15b6d6" />
+                  <FiPlus size={24} color="#15B6D6" />
                 </label>
               </div>
 
