@@ -41,8 +41,20 @@ function CreateOrphanage() {
   }
 
   function handleSelectImage(event: ChangeEvent<HTMLInputElement>) {
+    const maxSize = 5 * 1024 * 1024;
+
     if (event.target.files) {
       const files = Array.from(event.target.files);
+
+      if (files[files.length - 1].size > maxSize) {
+        const messageError = 'Imagem não pode ter mais de 5MB!'
+        toast.error(messageError, {
+          autoClose: 5000
+        });
+
+        return;
+      }
+
       const selectedImages = [...images, ...files];
       setImages(selectedImages);
 
