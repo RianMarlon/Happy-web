@@ -1,0 +1,31 @@
+.input-block label {
+  display: block;
+  margin-bottom: 0.8rem;
+  
+  color: var(--color-text-label);
+  line-height: 2.4rem;
+}
+
+.input-block .input {
+  width: 100%;
+  color: var(--color-text-complement);
+  background-color: var(--color-background-input);
+  border: 1px solid var(--color-border-gray);
+  border-radius: 2rem;
+  outline: none;
+  height: 6.4rem;
+  padding: 0 1.6rem;
+  text-align: top;
+}
+
+.input-block .no-empty {
+  border-color: var(--color-border-active);
+}
+
+.input-block .input-error {
+  border-color: var(--color-text-error);
+}
+
+.input-block .error {
+  color: var(--color-text-error);
+}
