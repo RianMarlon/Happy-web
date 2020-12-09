@@ -1,0 +1,44 @@
+.textarea-block label {
+  display: block;
+  margin-bottom: 0.8rem;
+  
+  color: var(--color-text-label);
+  line-height: 2.4rem;
+}
+
+.textarea-block .comment {
+  margin-left: 2.4rem;
+
+  font-size: 1.4rem;
+  color: var(--color-text-label);
+  line-height: 2.4rem;
+}
+
+.textarea-block .textarea {
+  width: 100%;
+  color: var(--color-text-complement);
+  background-color: var(--color-background-input);
+  border: 1px solid var(--color-border-gray);
+  border-radius: 2rem;
+  outline: none;
+  min-height: 12rem;
+  max-height: 24rem;
+  padding: 1.6rem;
+  text-align: top;
+
+  resize: vertical;
+
+  line-height: 2.8rem;
+}
+
+.textarea-block .error {
+  color: var(--color-text-error);
+}
+
+.textarea-block .no-empty {
+  border-color: var(--color-border-active);
+}
+
+.textarea-block .textarea-error {
+  border-color: var(--color-text-error);
+}
