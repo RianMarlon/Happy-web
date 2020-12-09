@@ -1,0 +1,60 @@
+.input-password-block label {
+  display: block;
+  margin-bottom: 0.8rem;
+  
+  color: var(--color-text-label);
+  line-height: 2.4rem;
+}
+
+.input-password-block .input-password-container {
+  height: 6.4rem;
+  position: relative;
+}
+
+.input-password-block .input-password {
+  width: 100%;
+  color: var(--color-text-complement);
+  background-color: var(--color-background-input);
+  border: 1px solid var(--color-border-gray);
+  border-radius: 2rem;
+  outline: none;
+  height: 6.4rem;
+  padding: 2rem 1.6rem;
+  padding-right: 6rem;
+  text-align: top;
+}
+
+.input-password-block .no-empty {
+  border-color: var(--color-border-active);
+}
+
+.input-password-block .input-password-error {
+  border-color: var(--color-text-error);
+}
+
+.input-password-block .error {
+  color: var(--color-text-error);
+}
+
+.input-password-block .input-password-container .button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 6.4rem;
+  width: 6rem;
+}
+
+.input-password-block .input-password-container .button-container button {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-width: 0;
+}
