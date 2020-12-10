@@ -10,13 +10,9 @@ function useForm(initialState: any) {
     
     newForm[e.target.name] = e.target.value;
     newErrors[e.target.name] = false;
-
+    
     setForm({...newForm});
     setErrors({...newErrors});
-  }
-
-  function updateForm(obj: any) {
-    setForm({ ...obj });
   }
 
   function validateFields() {
@@ -38,9 +34,9 @@ function useForm(initialState: any) {
   }
 
   return [
-    form, updateField, 
-    updateForm, validateFields, 
-    errors, hasOneFieldEmpty,
+    form, errors,
+    updateField, validateFields,
+    hasOneFieldEmpty,
   ]
 }
 
