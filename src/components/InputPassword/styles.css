@@ -1,4 +1,4 @@
-.input-password-block label {
+.input-block label {
   display: block;
   margin-bottom: 0.8rem;
   
@@ -6,12 +6,12 @@
   line-height: 2.4rem;
 }
 
-.input-password-block .input-password-container {
+.input-block .input-password-container {
   height: 6.4rem;
   position: relative;
 }
 
-.input-password-block .input-password {
+.input-block .input-password {
   width: 100%;
   color: var(--color-text-complement);
   background-color: var(--color-background-input);
@@ -24,19 +24,19 @@
   text-align: top;
 }
 
-.input-password-block .no-empty {
+.input-block .no-empty {
   border-color: var(--color-border-active);
 }
 
-.input-password-block .input-password-error {
+.input-block .input-error {
   border-color: var(--color-text-error);
 }
 
-.input-password-block .error {
+.input-block .error {
   color: var(--color-text-error);
 }
 
-.input-password-block .input-password-container .button-container {
+.input-block .input-password-container .button-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +48,7 @@
   width: 6rem;
 }
 
-.input-password-block .input-password-container .button-container button {
+.input-block .input-password-container .button-container button {
   flex: 1;
   justify-content: center;
   align-items: center;

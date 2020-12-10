@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes, useState, useEffect } from 'react';
 
 import './styles.css';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   labelError: string;
   error: boolean;

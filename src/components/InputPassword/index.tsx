@@ -43,7 +43,7 @@ function InputPassword({ name, label, labelError, error, value, onChange }: Inpu
   }, [value, error]);
 
   return (
-    <div className="input-password-block">
+    <div className="input-block">
       <label className={labelClassName} htmlFor={name}>
         {
           error ? labelError : label
