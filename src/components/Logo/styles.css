@@ -21,7 +21,8 @@
 
 @media(min-width: 1100px) {
   .logo-container {
-    min-height: 600px;
+    position: fixed;
+    height: 100%;
   }
 
   .logo-container img {
