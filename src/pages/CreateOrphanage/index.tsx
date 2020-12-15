@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
@@ -9,6 +9,8 @@ import api from '../../services/api';
 import useForm from '../../hooks/useForm';
 
 import Sidebar from '../../components/Sidebar';
+import Input from '../../components/Input';
+import Textarea from '../../components/Textarea';
 
 import mapIcon from '../../utils/mapIcon';
 
@@ -19,18 +21,60 @@ function CreateOrphanage() {
   const history = useHistory();
 
   const initialFields = {
-    name: '',
+    orphanage: '',
     about: '',
+    whatsapp: '',
     instructions: '',
-    openingHours: '',
+    openFrom: '',
+    openUntil: '',
   }
 
-  const [form, updateField] = useForm(initialFields)
+  const [
+    form, errors,
+    updateField, validateFields,
+    hasOneFieldEmpty,
+  ] = useForm(initialFields);
+
   const [openOnWeekends, setOpenOnWeekends] = useState(false);
   const [images, setImages] = useState<File[]>([]);
+  const [buttonSubmitDisabled, setButtonSubmitDisabled] = useState(true);
+
+  const [errorImages, setErrorImages] = useState(false);
+
   const [previewImages, setPreviewImages] = useState<string[]>([]);
 
+  const [myLocation, setMyLocation] = useState({ latitude: -5.1069647, longitude: -38.3761372 });
   const [position, setPosition] = useState({ latitude: -5.1069647, longitude: -38.3761372 });
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(({ coords }) => {
+      setMyLocation({ latitude: coords.latitude, longitude: coords.longitude });
+      setPosition({ latitude: coords.latitude, longitude: coords.longitude });
+    });
+  }, []);
+
+  useEffect(() => {
+    if (hasOneFieldEmpty() || images.length === 0) {
+      if (images.length > 0) {
+        setErrorImages(false);
+      }
+
+      setButtonSubmitDisabled(true);
+    }
+
+    else {
+      setErrorImages(false);
+      setButtonSubmitDisabled(false);
+    }
+  }, [form, images, hasOneFieldEmpty]);
+
+  function addNumber(e: ChangeEvent<HTMLInputElement>) {
+    const regex = /^[0-9]+$/;
+    
+    if (regex.test(e.target.value) || e.target.value.trim() === '') {
+      updateField(e);
+    }
+  }
 
   function handleMapClick(event: LeafletMouseEvent) {
     const { lat, lng } = event.latlng;
@@ -46,16 +90,24 @@ function CreateOrphanage() {
     if (event.target.files) {
       const files = Array.from(event.target.files);
 
-      if (files[files.length - 1].size > maxSize) {
-        const messageError = 'Imagem não pode ter mais de 5MB!'
-        toast.error(messageError, {
-          autoClose: 5000
-        });
+      const newFiles = [] as File[];
 
-        return;
-      }
+      files.forEach((file) => {
+        if (file.size > maxSize) {
+          const messageError = 'Imagem não pode ter mais de 5MB!';
+          toast.error(messageError, {
+            autoClose: 5000
+          });
+  
+          return;
+        }
 
-      const selectedImages = [...images, ...files];
+        else {
+          newFiles.push(file);
+        }
+      });
+
+      const selectedImages = [...images, ...newFiles];
       setImages(selectedImages);
 
       const selectedImagesPreview = selectedImages.map((image) => {
@@ -87,16 +139,28 @@ function CreateOrphanage() {
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
+    validateFields();
+
+    if (hasOneFieldEmpty() || images.length === 0) {
+      if (images.length === 0) {
+        setErrorImages(true);
+      }
+
+      return;
+    }
+
     const { latitude, longitude } = position;
 
     const data = new FormData();
 
-    data.append('name', form.name);
+    data.append('name', form.orphanage);
     data.append('about', form.about);
+    data.append('whatsapp', form.whatsapp);
     data.append('latitude', String(latitude));
     data.append('longitude', String(longitude));
     data.append('instructions', form.instructions);
-    data.append('opening_hours', form.openingHours);
+    data.append('open_from', form.openFrom);
+    data.append('open_until', form.openUntil);
     data.append('open_on_weekends', String(openOnWeekends));
     
     images.forEach((image) => {
@@ -129,48 +193,61 @@ function CreateOrphanage() {
             <legend>Dados</legend>
 
             <Map 
-              center={[-5.1069647, -38.3761372]} 
-              style={{ width: '100%', height: 280 }}
-              zoom={15}
+              className="map"
+              center={[myLocation.latitude, myLocation.longitude]} 
+              style={{ width: '100%' }}
+              zoom={15.50292}
               onClick={handleMapClick}
             >
               <TileLayer 
                 url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
               />
 
-              { position.latitude !== 0 && (
+              { position.latitude !== -1000 && (
                 <Marker 
                   interactive={false}
                   icon={mapIcon}
                   position={[position.latitude, position.longitude]} 
                 />
               )}
-
             </Map>
 
-            <div className="input-block">
-              <label htmlFor="name">Nome</label>
-              <input 
-                id="name"
-                name="name"
-                value={form.name}
-                onChange={updateField} 
-              />
-            </div>
+            <Input 
+              name="orphanage"
+              label="Nome"
+              value={form.orphanage}
+              onChange={updateField}
+              labelError="Nome não informado"
+              error={errors.orphanage}
+            />
 
-            <div className="input-block">
-              <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
-              <textarea 
-                id="about"
-                name="about"
-                value={form.about}
-                onChange={updateField} 
-                maxLength={300}
-              />
-            </div>
+            <Textarea 
+              name="about"
+              label="Sobre"
+              value={form.about}
+              onChange={updateField}
+              labelError="Informações sobre o orfanato não fornecidas"
+              error={errors.about}
+              comment="Máximo de 500 caracteres"
+            />
 
-            <div className="input-block">
-              <label htmlFor="images">Fotos</label>
+            <Input
+              name="whatsapp"
+              label="Número do Whatsapp"
+              value={form.whatsapp}
+              onChange={addNumber}
+              labelError="Número do Whatsapp não informado"
+              error={errors.whatsapp}
+              placeholder="Ex: 5585992820129"
+            />
+
+            <div className="input-container">
+              <label 
+                className={errorImages ? 'error' : ''}
+                htmlFor="images"
+              >
+                { !errorImages ? 'Fotos' : 'Fotos não fornecidas'}
+              </label>
               <div className="images-container">
                 { previewImages.map((image, index) => {
                   return (
@@ -196,28 +273,40 @@ function CreateOrphanage() {
 
           <fieldset>
             <legend>Visitação</legend>
+            
+            <Textarea 
+              name="instructions"
+              label="Instruções"
+              value={form.instructions}
+              onChange={updateField}
+              labelError="Instruções sobre o orfanato não fornecidas"
+              error={errors.instructions}
+              comment="Máximo de 500 caracteres"
+            />
 
-            <div className="input-block">
-              <label htmlFor="instructions">Instruções</label>
-              <textarea 
-                id="instructions"
-                name="instructions"
-                value={form.instructions}
+            <div className="opening-hours-block">
+              <Input 
+                name="openFrom"
+                label="Horário de abertura"
+                value={form.openFrom}
                 onChange={updateField}
+                labelError="Horário não informado"
+                error={errors.openFrom}
+                type="time"
+              />
+
+              <Input 
+                name="openUntil"
+                label="Horário de fechamento"
+                value={form.openUntil}
+                onChange={updateField}
+                labelError="Horário não informado"
+                error={errors.openUntil}
+                type="time"
               />
             </div>
 
-            <div className="input-block">
-              <label htmlFor="opening_hours">Horário de funcionamento</label>
-              <input 
-                id="opening_hours"
-                name="openingHours"
-                value={form.openingHours}
-                onChange={updateField}
-              />
-            </div>
-
-            <div className="input-block">
+            <div className="input-container">
               <label htmlFor="open_on_weekends">Atende fim de semana</label>
 
               <div className="button-select">
@@ -239,7 +328,11 @@ function CreateOrphanage() {
             </div>
           </fieldset>
 
-          <button className="confirm-button" type="submit">
+          <button 
+            className="confirm-button" 
+            type="submit"
+            disabled={buttonSubmitDisabled}
+          >
             Confirmar
           </button>
         </form>
