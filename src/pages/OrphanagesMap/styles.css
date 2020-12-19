@@ -1,43 +1,58 @@
 #page-map {
+  display: flex;
   width: 100vw;
   min-height: 100vh;
-
-  position: relative;
-
-  display: flex;
 }
 
 #page-map aside {
-  width: 44rem;
-  background: var(--linear-gradient-blue-secondary);
-  padding: 6rem;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  padding: 1.6rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  width: 30%;
+  max-width: 40rem;
+
+  background: var(--linear-gradient-blue-primary);
 }
 
 #page-map aside h2 {
-  font-size: 3.8rem;
-  font-weight: 800;
-  line-height: 4.2rem;
   margin-top: 5rem;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 2.4rem;
 }
 
 #page-map aside p {
-  line-height: 2.8rem;
   margin-top: 1.6rem;
+  font-size: 0;
+  line-height: 0;
+}
+
+#page-map aside a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-map aside img {
+  width: 5rem;
 }
 
 #page-map footer {
-  margin-top: 10rem;
   display: flex;
   flex-direction: column;
+  
+  margin-top: 7rem;
 
   line-height: 2.4rem;
 }
 
-#page-map footer strong {
+#page-map footer strong, #page-map footer span {
+  font-size: 1.6rem;
   font-weight: 800;
 }
 
@@ -46,18 +61,19 @@
 }
 
 #page-map .create-orphanage {
-  position: absolute;
-  right: 4rem;
-  bottom: 4rem;
-  
-  width: 6.4rem;
-  height: 6.4rem;
-  background-color: #15C3D6;
-  border-radius: 2rem;
-
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: absolute;
+  right: 2rem;
+  bottom: 3rem;
+
+  width: 5rem;
+  height: 5rem;
+  
+  background-color: #15C3D6;
+  border-radius: 1.6rem;
 
   z-index: 10;
 
@@ -68,6 +84,10 @@
   background-color: #17D6ED;
 }
 
+#page-map .map-popup {
+  margin-left: -1rem;
+}
+
 #page-map .map-popup .leaflet-popup-content-wrapper {
   background-color: var(--color-background-popup);
   border-radius: 2rem;
@@ -75,28 +95,86 @@
 }
 
 #page-map .map-popup .leaflet-popup-content {
-  color: var(--color-text-popup);
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 0.8rem 1.2rem;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  margin: 0.8rem 1.6rem;
+
+  color: var(--color-text-popup);
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 #page-map .map-popup .leaflet-popup-content a {
-  width: 4rem;
-  height: 4rem;
-  background-color: var(--color-background-popup-link);
-  box-shadow: var(--box-shadow-popup);
-  border-radius: 1.2rem;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  margin-left: 2rem;
+
+  width: 4rem;
+  height: 4rem;
+
+  background-color: var(--color-background-popup-link);
+  box-shadow: var(--box-shadow-popup);
+  border-radius: 1.2rem;
 }
 
 #page-map .map-popup .leaflet-popup-tip-container {
   display: none;
+}
+
+@media(min-width: 600px) {  
+  #page-map aside {
+    padding: 3rem;
+  }
+  
+  #page-map aside h2 {
+    font-size: 2.6rem;
+    line-height: 3.6rem;
+  }
+  
+  #page-map aside p {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+  }
+  
+  #page-map aside img {
+    width: 6rem;
+  }
+  
+  #page-map footer {
+    line-height: 2.4rem;
+  }
+  
+  #page-map .create-orphanage {    
+    width: 5.5rem;
+    height: 5.5rem;
+
+    right: 4rem;
+    bottom: 4rem;
+  }
+}
+
+@media(min-width: 1100px) {
+  #page-map aside {
+    padding: 5rem;
+    width: 40rem;
+  }
+  
+  #page-map aside h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 3.8rem;
+  }
+  
+  #page-map aside p {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+  }
+  
+  #page-map aside img {
+    width: 6.5rem;
+  }
 }
