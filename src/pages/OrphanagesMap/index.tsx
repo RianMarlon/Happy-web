@@ -13,9 +13,9 @@ import './styles.css';
 
 const mapIcon = Leaflet.icon({
   iconUrl: mapMarkerImg,
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [170, 2],
+  iconSize: [50, 60],
+  iconAnchor: [25, 60],
+  popupAnchor: [170, 8],
 });
 
 interface Orphanage {
@@ -27,9 +27,14 @@ interface Orphanage {
 
 function OrphanagesMap() {
 
+  const [myLocation, setMyLocation] = useState({ latitude: -5.1069647, longitude: -38.3761372 });
   const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
 
   useEffect(() => {
+    navigator.geolocation.getCurrentPosition(({ coords }) => {
+      setMyLocation({ latitude: coords.latitude, longitude: coords.longitude });
+    });
+
     api.get('/orphanages')
       .then((response) => {
         setOrphanages(response.data);
@@ -40,7 +45,9 @@ function OrphanagesMap() {
     <div id="page-map">
       <aside>
         <header>
-          <img src={mapMarkerImg} alt="Happy" />
+          <Link to="/">
+            <img src={mapMarkerImg} alt="Happy" />
+          </Link>
 
           <h2>Escolha um orfanato no mapa</h2>
           <p>Muitas crianças estão esperando sua visita :)</p>
@@ -52,8 +59,8 @@ function OrphanagesMap() {
       </aside>
 
       <Map 
-        center={[-5.1069647, -38.3761372]}
-        zoom={15}
+        center={[myLocation.latitude, myLocation.longitude]}
+        zoom={15.50292}
         style={{ flex: 1 }}
       >
         <TileLayer 
@@ -68,8 +75,11 @@ function OrphanagesMap() {
                 position={[orphanage.latitude, orphanage.longitude]}
                 key={orphanage.id}
               >
-                <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-                  { orphanage.name }
+                <Popup closeButton={false} minWidth={180} maxWidth={460} className="map-popup">
+                  { orphanage.name.length < 30
+                    ? orphanage.name 
+                    : `${orphanage.name.slice(0, 30)}...`
+                  }
                   <Link to={`/orphanages/${orphanage.id}`}>
                     <FiArrowRight size={20} color="#FFF" />
                   </Link>
@@ -81,7 +91,7 @@ function OrphanagesMap() {
       </Map>
 
       <Link to="/orphanages/create" className="create-orphanage">
-        <FiPlus size={32} color="#FFF" />
+        <FiPlus className="fi-plus" size={26} color="#FFF" />
       </Link>
     </div>
   );
