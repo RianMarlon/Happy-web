@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 import { InputProps } from '../Input';
-
-import eyeImg from '../../assets/images/eye.svg';
-import eyeOffImg from '../../assets/images/eye-off.svg';
 
 import './styles.css';
 
@@ -59,8 +57,8 @@ function InputPassword({ name, label, labelError, error, value, onChange }: Inpu
           <button type="button" onClick={() => setShowPassword(!showPassword)}>
             {
               showPassword
-              ? <img src={eyeOffImg} alt="" />
-              : <img src={eyeImg} alt="" />
+              ? <FiEyeOff size={24} color="#15C3D6" strokeWidth={1.5} />
+              : <FiEye size={24} color="#8FA7B3" strokeWidth={1.5} />
             }
           </button>
         </div>
