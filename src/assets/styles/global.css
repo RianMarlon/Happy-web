@@ -1,16 +1,17 @@
 :root {
   font-size: 60%;
 
-  --linear-gradient-blue-primary: linear-gradient(329.54deg, #15B6D6 0%, #15D6D6 100%);
-  --linear-gradient-blue-secondary: linear-gradient(329.54deg, #29B6D1 0%, #00C7C7 100%);
+  --linear-gradient-blue-primary: linear-gradient(329.54deg, #29B6D1 0%, #00C7C7 100%);
+  --linear-gradient-blue-secondary: linear-gradient(329.54deg, #15B6D6 0%, #15D6D6 100%);
   --linear-gradient-white-primary: linear-gradient(149.97deg, #E6F7FB 8.13%, #FFFFFF 92.67%);
   --linear-gradient-white-secondary: linear-gradient(154.16deg, #EDFFF6 7.85%, #FFFFFF 91.03%);
   --linear-gradient-white-tertiary: linear-gradient(154.16deg, #FDF0F5 7.85%, #FFFFFF 91.03%);
   
   --color-primary: #12AFCB;
   --color-primary-hover: #17D6EB;
-  --color-secondary: #3CDC8C;
-  --color-secondary-hover: #36CF82;
+  --color-secondary: #37C77F;
+  --color-secondary-dark: #31B272;
+  --color-secondary-hover: #3EE08F;
   --color-background-body: #EBF2F5;
   --color-background-map: #E6F7FB;
   --color-background-popup: rgba(255, 255, 255, 0.8);
@@ -31,6 +32,8 @@
   --color-text-input: #5C8599;
   --color-text-active: #37C77F;
   --color-text-error: #FF669D;
+  --color-text-error-dark: #D6487B;
+  --color-text-error-hover: #F671A2;
   --color-button-enter: #FFD666;
   --color-button-enter-hover: #96FEFF;
 

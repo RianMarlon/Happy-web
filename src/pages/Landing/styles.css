@@ -1,4 +1,3 @@
-
 #page-landing {
   display: flex;
   align-items: center;
@@ -6,7 +5,7 @@
 
   min-height: 100vh;
 
-  background: var(--linear-gradient-blue-secondary);
+  background: var(--linear-gradient-blue-primary);
 }
 
 #page-landing .content-wrapper {
@@ -29,8 +28,7 @@
 }
 
 #page-landing .content-wrapper header img {
-  width: 20rem;
-  height: 6.8rem;
+  width: 22rem;
 }
 
 #page-landing .content-wrapper header .location {
