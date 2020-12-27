@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiArrowLeft, FiPower } from 'react-icons/fi';
 
 import mapMarkerImg from '../../assets/images/map-marker.svg';
 
@@ -11,13 +11,18 @@ function Sidebar() {
   
   return (
     <aside className="app-sidebar">
-      <Link to="/">
-        <img src={mapMarkerImg} alt="Happy" />
-      </Link>
+      <header>
+        <Link to="/">
+          <img src={mapMarkerImg} alt="Happy" />
+        </Link>
+        <button type="button" onClick={goBack}>
+          <FiArrowLeft size={24} />
+        </button>
+      </header>
 
       <footer>
-        <button type="button" onClick={goBack}>
-          <FiArrowLeft size={24} color="#FFF" />
+        <button className="button-logout">
+          <FiPower size={24} strokeWidth={3} />
         </button>
       </footer>
     </aside>
