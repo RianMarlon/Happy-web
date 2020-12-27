@@ -12,31 +12,34 @@ aside.app-sidebar {
   align-items: center;
 }
 
-aside.app-sidebar img {
+aside.app-sidebar header img {
   width: 4.8rem;
 }
 
-aside.app-sidebar footer a,
-aside.app-sidebar footer button {
+aside.app-sidebar header button {
+  margin-top: 1rem;
+}
+
+aside.app-sidebar button {
   width: 4.8rem;
   height: 4.8rem;
 
   border: 0;
 
   background-color: var(--color-primary);
+  color: var(--color-text-default);
   border-radius: 1.6rem;
 
   cursor: pointer;
 
-  transition: background-color 0.2s;
+  transition: background-color 0.2s linear;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-aside.app-sidebar footer a:hover,
-aside.app-sidebar footer button:hover {
+aside.app-sidebar button:hover {
   background-color: var(--color-primary-hover);
 }
 
