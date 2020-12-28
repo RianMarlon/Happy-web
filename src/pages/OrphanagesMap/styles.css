@@ -42,7 +42,7 @@
   width: 5rem;
 }
 
-#page-map footer {
+#page-map aside footer {
   display: flex;
   flex-direction: column;
   
@@ -51,7 +51,40 @@
   line-height: 2.4rem;
 }
 
-#page-map footer strong, #page-map footer span {
+#page-map aside footer > div {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 2.4rem;
+}
+
+#page-map aside footer .button-logout {
+  align-self: center;
+
+  width: 4.8rem;
+  height: 4.8rem;
+
+  margin-top: 2rem;
+
+  border: 0;
+
+  background-color: var(--color-primary);
+  border-radius: 1.6rem;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s linear;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#page-map aside footer button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+#page-map aside footer strong, #page-map aside footer span {
   font-size: 1.6rem;
   font-weight: 800;
 }
@@ -144,10 +177,6 @@
     width: 6rem;
   }
   
-  #page-map footer {
-    line-height: 2.4rem;
-  }
-  
   #page-map .create-orphanage {    
     width: 5.5rem;
     height: 5.5rem;
@@ -176,5 +205,27 @@
   
   #page-map aside img {
     width: 6.5rem;
+  }
+
+  #page-map aside footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    margin-top: 7rem;
+  }
+
+  #page-map aside footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    margin-top: 7rem;
+  }
+
+  #page-map aside footer .button-logout {
+    margin-top: 0;
   }
 }
