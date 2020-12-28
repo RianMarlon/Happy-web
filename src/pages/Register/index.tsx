@@ -173,7 +173,6 @@ function Register() {
           title="Cadastro concluído!"
           description="Agora você precisa acessar seu e-mail e confirmá-lo através de um e-mail que enviamos."
           textButton="Voltar ao login"
-          routeButton="/login"
         />
       )}
     </>

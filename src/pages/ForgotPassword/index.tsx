@@ -117,7 +117,6 @@ function ForgotPassword() {
           title="Redefinição enviada!"
           description="Boa, agora é só checar o e-mail que foi enviado para você redefinir sua senha."
           textButton="Voltar ao login"
-          routeButton="/login"
         />
       )}
     </>
