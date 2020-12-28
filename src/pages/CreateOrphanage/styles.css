@@ -16,7 +16,8 @@
 
   margin: 0 auto;
   margin-top: 3rem;
-  
+  padding: 0 6rem;
+
   color: var(--color-text-label);
   font-size: 1.8rem;
   line-height: 2.8rem;
