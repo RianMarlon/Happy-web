@@ -11,7 +11,12 @@
 }
 
 #page-create-orphanage main > h1 {
+  min-width: 20rem;
+  max-width: 70rem;
+
+  margin: 0 auto;
   margin-top: 3rem;
+  
   color: var(--color-text-label);
   font-size: 1.8rem;
   line-height: 2.8rem;

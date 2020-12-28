@@ -188,6 +188,7 @@ function CreateOrphanage() {
       <Sidebar />
 
       <main>
+        <h1>Adicione um orfanato</h1>
         <form onSubmit={handleSubmit} className="create-orphanage-form">
           <fieldset>
             <legend>Dados</legend>
