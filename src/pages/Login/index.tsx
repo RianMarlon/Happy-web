@@ -42,7 +42,7 @@ function Login() {
     }
   }, [form, hasOneFieldEmpty, regexValidateEmail]);
 
-  function handleSubmitLogin(e: FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     validateFields();
@@ -83,7 +83,7 @@ function Login() {
       <main>
         <div className="login-content">
           <h1>Fazer login</h1>
-          <form onSubmit={handleSubmitLogin} method="POST">
+          <form onSubmit={handleSubmit} method="POST">
             <Input
               name="email"
               type="email"

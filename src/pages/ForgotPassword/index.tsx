@@ -42,7 +42,7 @@ function ForgotPassword() {
     }
   }, [form, hasOneFieldEmpty, regexValidateEmail]);
 
-  function handleSubmitForgotPassword(e: FormEvent) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
     validateFields();
@@ -89,7 +89,7 @@ function ForgotPassword() {
                   <h1>Esqueci a senha</h1>
                   <p>Sua redefinição de senha será enviada para o e-mail cadastrado.</p>
                 </div>
-                <form onSubmit={handleSubmitForgotPassword} method="POST">
+                <form onSubmit={handleSubmit} method="POST">
                   <Input
                     name="email"
                     type="email"
