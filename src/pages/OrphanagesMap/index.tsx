@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiPlus, FiArrowRight } from 'react-icons/fi';
+import { FiPlus, FiArrowRight, FiPower } from 'react-icons/fi';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import Leaflet from 'leaflet';
@@ -53,8 +53,14 @@ function OrphanagesMap() {
           <p>Muitas crianças estão esperando sua visita :)</p>
         </header>
         <footer>
-          <strong>Morada Nova</strong>
-          <span>Ceará</span>
+          <div>
+            <strong>Morada Nova</strong>
+            <span>Ceará</span>
+          </div>
+
+          <button className="button-logout">
+            <FiPower size={24} color="#FFF" strokeWidth={3} />
+          </button>
         </footer>
       </aside>
 
@@ -76,7 +82,7 @@ function OrphanagesMap() {
                 key={orphanage.id}
               >
                 <Popup closeButton={false} minWidth={180} maxWidth={460} className="map-popup">
-                  { orphanage.name.length < 30
+                  { orphanage.name.length <= 30
                     ? orphanage.name 
                     : `${orphanage.name.slice(0, 30)}...`
                   }
