@@ -53,7 +53,7 @@
   text-align: center;
 }
 
-#component-success .content-container div > a {
+#component-success .content-container div > button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,7 +75,7 @@
   transition: background-color 0.2s linear;
 }
 
-#component-success .content-container div > a:hover {
+#component-success .content-container div > button:hover {
   background-color: var(--color-secondary-hover);
 }
 
