@@ -10,13 +10,23 @@
   margin-left: 9rem;
 }
 
-form.create-orphanage-form {  
-  margin: 1rem auto;
-  padding: 3rem;
+#page-create-orphanage main > h1 {
+  margin-top: 3rem;
+  color: var(--color-text-label);
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+  font-weight: 600;
+  text-align: center;
+}
 
+#page-create-orphanage form.create-orphanage-form {  
   min-width: 20rem;
   max-width: 70rem;
   width: 100%;
+
+  margin: 2rem auto;
+  margin-top: 3rem;
+  padding: 3rem;
 
   background-color: var(--color-text-default);
   border: 1px solid var(--color-border-gray);
@@ -25,7 +35,7 @@ form.create-orphanage-form {
   overflow: hidden;
 }
 
-form.create-orphanage-form .leaflet-container {
+#page-create-orphanage form.create-orphanage-form .leaflet-container {
   margin-bottom: 4rem;
 
   height: 20rem;
@@ -34,15 +44,15 @@ form.create-orphanage-form .leaflet-container {
   border-radius: 2rem;
 }
 
-form.create-orphanage-form fieldset {
+#page-create-orphanage form.create-orphanage-form fieldset {
   border: 0;
 }
 
-form.create-orphanage-form fieldset + fieldset {
+#page-create-orphanage form.create-orphanage-form fieldset + fieldset {
   margin-top: 8rem;
 }
 
-form.create-orphanage-form fieldset legend {
+#page-create-orphanage form.create-orphanage-form fieldset legend {
   margin-bottom: 4rem;
   padding-bottom: 2.4rem;
 
@@ -55,15 +65,15 @@ form.create-orphanage-form fieldset legend {
   border-bottom: 1px solid var(--color-border-gray);
 }
 
-form.create-orphanage-form .input-block + .input-block,
-form.create-orphanage-form .input-block + .textarea-block,
-form.create-orphanage-form .textarea-block + .input-block,
-form.create-orphanage-form .textarea-block + .input-container,
-form.create-orphanage-form .input-block + .input-container {
+#page-create-orphanage form.create-orphanage-form .input-block + .input-block,
+#page-create-orphanage form.create-orphanage-form .input-block + .textarea-block,
+#page-create-orphanage form.create-orphanage-form .textarea-block + .input-block,
+#page-create-orphanage form.create-orphanage-form .textarea-block + .input-container,
+#page-create-orphanage form.create-orphanage-form .input-block + .input-container {
   margin-top: 2.4rem;
 }
 
-form.create-orphanage-form .input-container label {
+#page-create-orphanage form.create-orphanage-form .input-container label {
   display: flex;
 
   margin-bottom: 0.8rem;
@@ -72,7 +82,7 @@ form.create-orphanage-form .input-container label {
   line-height: 2.4rem;
 }
 
-form.create-orphanage-form .input-container label span {
+#page-create-orphanage form.create-orphanage-form .input-container label span {
   margin-left: 2.4rem;
 
   font-size: 1.4rem;
@@ -80,8 +90,8 @@ form.create-orphanage-form .input-container label span {
   line-height: 2.4rem;
 }
 
-form.create-orphanage-form .input-container input,
-form.create-orphanage-form .input-container textarea {
+#page-create-orphanage form.create-orphanage-form .input-container input,
+#page-create-orphanage form.create-orphanage-form .input-container textarea {
   width: 100%;
 
   background-color: var(--color-background-input);
@@ -91,17 +101,17 @@ form.create-orphanage-form .input-container textarea {
   color: var(--color-text-complement);
 }
 
-form.create-orphanage-form .input-container input {
+#page-create-orphanage form.create-orphanage-form .input-container input {
   height: 6.4rem;
   padding: 0 1.6rem;
 }
 
-form.create-orphanage-form .input-container input[type=file] {
+#page-create-orphanage form.create-orphanage-form .input-container input[type=file] {
   height: 0;
   opacity: 0;
 }
 
-form.create-orphanage-form .input-container textarea {
+#page-create-orphanage form.create-orphanage-form .input-container textarea {
   padding: 1.6rem;
   min-height: 12rem;
   max-height: 24rem;
@@ -109,22 +119,22 @@ form.create-orphanage-form .input-container textarea {
 
   line-height: 2.8rem;
 }
-form.create-orphanage-form .input-container .error {
+#page-create-orphanage form.create-orphanage-form .input-container .error {
   color: var(--color-text-error);
 }
 
-form.create-orphanage-form .input-container .images-container {
+#page-create-orphanage form.create-orphanage-form .input-container .images-container {
   display: grid;
   grid-template-columns: repeat(3, minmax(8.5rem, 13rem));
   grid-gap: 1.6rem;
 }
 
-form.create-orphanage-form .input-container .images-container .image-container {
+#page-create-orphanage form.create-orphanage-form .input-container .images-container .image-container {
   position: relative;
   height: 9.6rem;
 }
 
-form.create-orphanage-form .input-container .images-container .image-container button {
+#page-create-orphanage form.create-orphanage-form .input-container .images-container .image-container button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,14 +153,14 @@ form.create-orphanage-form .input-container .images-container .image-container b
   cursor: pointer;
 }
 
-form.create-orphanage-form .input-container .images-container .image-container img {
+#page-create-orphanage form.create-orphanage-form .input-container .images-container .image-container img {
   height: 9.6rem;
   width: 100%;
 
   border-radius: 2rem;
 }
 
-form.create-orphanage-form .input-container .new-image {
+#page-create-orphanage form.create-orphanage-form .input-container .new-image {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,7 +173,7 @@ form.create-orphanage-form .input-container .new-image {
   cursor: pointer;
 }
 
-form.create-orphanage-form .opening-hours-block {
+#page-create-orphanage form.create-orphanage-form .opening-hours-block {
   display: flex;
   flex-direction: column;
 
@@ -171,16 +181,16 @@ form.create-orphanage-form .opening-hours-block {
   margin-bottom: 2.4rem;
 }
 
-form.create-orphanage-form .opening-hours-block .input-block {
+#page-create-orphanage form.create-orphanage-form .opening-hours-block .input-block {
   width: 22rem;
 }
 
-form.create-orphanage-form .input-container .button-select {
+#page-create-orphanage form.create-orphanage-form .input-container .button-select {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-form.create-orphanage-form .input-container .button-select button {
+#page-create-orphanage form.create-orphanage-form .input-container .button-select button {
   height: 6.4rem;
 
   background-color: var(--color-background-input);
@@ -189,22 +199,22 @@ form.create-orphanage-form .input-container .button-select button {
   cursor: pointer;
 }
 
-form.create-orphanage-form .input-container .button-select button.active {
+#page-create-orphanage form.create-orphanage-form .input-container .button-select button.active {
   background-color: var(--color-background-button-active);
   border: 1px solid var(--color-border-active);
   color: var(--color-text-active);
 }
 
-form.create-orphanage-form .input-container .button-select button:first-child {
+#page-create-orphanage form.create-orphanage-form .input-container .button-select button:first-child {
   border-radius: 2rem 0 0 2rem;
 }
 
-form.create-orphanage-form .input-container .button-select button:last-child {
+#page-create-orphanage form.create-orphanage-form .input-container .button-select button:last-child {
   border-radius: 0 2rem 2rem 0;
   border-left: 0;
 }
 
-form.create-orphanage-form button.confirm-button {
+#page-create-orphanage form.create-orphanage-form button.confirm-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,18 +232,18 @@ form.create-orphanage-form button.confirm-button {
   font-weight: 800;
 }
 
-form.create-orphanage-form button.confirm-button:enabled {
+#page-create-orphanage form.create-orphanage-form button.confirm-button:enabled {
   cursor: pointer;
   background-color: var(--color-secondary);
   opacity: 1;
   transition: background-color 0.2s;
 }
 
-form.create-orphanage-form button.confirm-button:enabled:hover {
+#page-create-orphanage form.create-orphanage-form button.confirm-button:enabled:hover {
   background-color: var(--color-secondary-hover);
 }
 
-form.create-orphanage-form button.confirm-button svg {
+#page-create-orphanage form.create-orphanage-form button.confirm-button svg {
   margin-right: 1.6rem;
 }
 
@@ -244,11 +254,11 @@ form.create-orphanage-form button.confirm-button svg {
     margin-right: 3%;
   }
   
-  form.create-orphanage-form {
+  #page-create-orphanage form.create-orphanage-form {
     padding: 5rem;
   }
   
-  form.create-orphanage-form .leaflet-container {
+  #page-create-orphanage form.create-orphanage-form .leaflet-container {
     margin-bottom: 4rem;
 
     height: 32rem;
@@ -257,27 +267,28 @@ form.create-orphanage-form button.confirm-button svg {
     border-radius: 2rem;
   }
 
-  form.create-orphanage-form .input-container .images-container {
+  #page-create-orphanage form.create-orphanage-form .input-container .images-container {
     grid-template-columns: repeat(4, minmax(10rem, 1fr));
   }
 }
 
 @media(min-width: 1100px) {
-  form.create-orphanage-form {
-    margin: 6rem auto;
+  #page-create-orphanage form.create-orphanage-form {
+    margin: 3rem auto;
+    margin-bottom: 5rem;
   }
 
-  form.create-orphanage-form .input-container .images-container {
+  #page-create-orphanage form.create-orphanage-form .input-container .images-container {
     grid-template-columns: repeat(5, 1fr);
   }
 
-  form.create-orphanage-form .opening-hours-block {
+  #page-create-orphanage form.create-orphanage-form .opening-hours-block {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
   
-  form.create-orphanage-form .opening-hours-block .input-block {
+  #page-create-orphanage form.create-orphanage-form .opening-hours-block .input-block {
     margin-top: 0;
     width: 22rem;
   }
