@@ -11,6 +11,7 @@ import Sidebar from '../../components/Sidebar';
 import mapIcon from '../../utils/mapIcon';
 
 import './styles.css';
+import Loading from '../../components/Loading';
 
 interface Image {
   id: number;
@@ -50,7 +51,7 @@ function Orphanage() {
   }, [params.id]);
 
   if (!orphanage) {
-    return <p>Carregando...</p>
+    return <Loading />;
   }
 
   return (
