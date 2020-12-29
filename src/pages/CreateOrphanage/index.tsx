@@ -11,6 +11,7 @@ import useForm from '../../hooks/useForm';
 import Sidebar from '../../components/Sidebar';
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
+import Success from '../../components/Success';
 
 import mapIcon from '../../utils/mapIcon';
 
@@ -46,6 +47,8 @@ function CreateOrphanage() {
   const [myLocation, setMyLocation] = useState({ latitude: -5.1069647, longitude: -38.3761372 });
   const [position, setPosition] = useState({ latitude: -5.1069647, longitude: -38.3761372 });
 
+  const [isSuccess, setIsSuccess] = useState(false);
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords }) => {
       setMyLocation({ latitude: coords.latitude, longitude: coords.longitude });
@@ -66,7 +69,7 @@ function CreateOrphanage() {
       setErrorImages(false);
       setButtonSubmitDisabled(false);
     }
-  }, [form, images, hasOneFieldEmpty]);
+  }, [form, images, hasOneFieldEmpty, history]);
 
   function addNumber(e: ChangeEvent<HTMLInputElement>) {
     const regex = /^[0-9]+$/;
@@ -169,8 +172,7 @@ function CreateOrphanage() {
 
     api.post('/orphanages', data)
       .then(() => {
-        alert('Cadastro realizado com sucesso!');
-        history.push('/app');
+        setIsSuccess(true);
       })
       .catch(({ response }) => {
         const data = response.data;
@@ -183,162 +185,172 @@ function CreateOrphanage() {
   }
 
   return (
-    <div id="page-create-orphanage">
-      <ToastContainer />
-      <Sidebar />
+    <>
+      {!isSuccess ? (
+        <div id="page-create-orphanage">
+          <ToastContainer />
+          <Sidebar />
 
-      <main>
-        <h1>Adicione um orfanato</h1>
-        <form onSubmit={handleSubmit} className="create-orphanage-form">
-          <fieldset>
-            <legend>Dados</legend>
+          <main>
+            <h1>Adicione um orfanato</h1>
+            <form onSubmit={handleSubmit} className="create-orphanage-form">
+              <fieldset>
+                <legend>Dados</legend>
 
-            <Map 
-              className="map"
-              center={[myLocation.latitude, myLocation.longitude]} 
-              style={{ width: '100%' }}
-              zoom={15.50292}
-              onClick={handleMapClick}
-            >
-              <TileLayer 
-                url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
-              />
+                <Map 
+                  className="map"
+                  center={[myLocation.latitude, myLocation.longitude]} 
+                  style={{ width: '100%' }}
+                  zoom={15.50292}
+                  onClick={handleMapClick}
+                >
+                  <TileLayer 
+                    url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
+                  />
 
-              { position.latitude !== -1000 && (
-                <Marker 
-                  interactive={false}
-                  icon={mapIcon}
-                  position={[position.latitude, position.longitude]} 
+                  { position.latitude !== -1000 && (
+                    <Marker 
+                      interactive={false}
+                      icon={mapIcon}
+                      position={[position.latitude, position.longitude]} 
+                    />
+                  )}
+                </Map>
+
+                <Input 
+                  name="orphanage"
+                  label="Nome"
+                  value={form.orphanage}
+                  onChange={updateField}
+                  labelError="Nome não informado"
+                  error={errors.orphanage}
                 />
-              )}
-            </Map>
 
-            <Input 
-              name="orphanage"
-              label="Nome"
-              value={form.orphanage}
-              onChange={updateField}
-              labelError="Nome não informado"
-              error={errors.orphanage}
-            />
+                <Textarea 
+                  name="about"
+                  label="Sobre"
+                  value={form.about}
+                  onChange={updateField}
+                  labelError="Informações sobre o orfanato não fornecidas"
+                  error={errors.about}
+                  comment="Máximo de 500 caracteres"
+                />
 
-            <Textarea 
-              name="about"
-              label="Sobre"
-              value={form.about}
-              onChange={updateField}
-              labelError="Informações sobre o orfanato não fornecidas"
-              error={errors.about}
-              comment="Máximo de 500 caracteres"
-            />
+                <Input
+                  name="whatsapp"
+                  label="Número do Whatsapp"
+                  value={form.whatsapp}
+                  onChange={addNumber}
+                  labelError="Número do Whatsapp não informado"
+                  error={errors.whatsapp}
+                  placeholder="Ex: 5585992820129"
+                />
 
-            <Input
-              name="whatsapp"
-              label="Número do Whatsapp"
-              value={form.whatsapp}
-              onChange={addNumber}
-              labelError="Número do Whatsapp não informado"
-              error={errors.whatsapp}
-              placeholder="Ex: 5585992820129"
-            />
+                <div className="input-container">
+                  <label 
+                    className={errorImages ? 'error' : ''}
+                    htmlFor="images"
+                  >
+                    { !errorImages ? 'Fotos' : 'Fotos não fornecidas'}
+                  </label>
+                  <div className="images-container">
+                    { previewImages.map((image, index) => {
+                      return (
+                        <div key={image} className="image-container">
+                          <button 
+                            onClick={() => handleRemoveImage(index)}
+                          >
+                            <FiX size={24} color="#FF669D" />
+                          </button>
+                          <img src={image} alt="" />
+                        </div>
+                      )
+                    })}
 
-            <div className="input-container">
-              <label 
-                className={errorImages ? 'error' : ''}
-                htmlFor="images"
+                    <label htmlFor="image" className="new-image">
+                      <FiPlus size={24} color="#15B6D6" />
+                    </label>
+                  </div>
+
+                  <input multiple onChange={handleSelectImage} type="file" id="image" />
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Visitação</legend>
+                
+                <Textarea 
+                  name="instructions"
+                  label="Instruções"
+                  value={form.instructions}
+                  onChange={updateField}
+                  labelError="Instruções sobre o orfanato não fornecidas"
+                  error={errors.instructions}
+                  comment="Máximo de 500 caracteres"
+                />
+
+                <div className="opening-hours-block">
+                  <Input 
+                    name="openFrom"
+                    label="Horário de abertura"
+                    value={form.openFrom}
+                    onChange={updateField}
+                    labelError="Horário não informado"
+                    error={errors.openFrom}
+                    type="time"
+                  />
+
+                  <Input 
+                    name="openUntil"
+                    label="Horário de fechamento"
+                    value={form.openUntil}
+                    onChange={updateField}
+                    labelError="Horário não informado"
+                    error={errors.openUntil}
+                    type="time"
+                  />
+                </div>
+
+                <div className="input-container">
+                  <label htmlFor="open_on_weekends">Atende fim de semana</label>
+
+                  <div className="button-select">
+                    <button
+                      type="button"
+                      className={openOnWeekends ? 'active' : ''}
+                      onClick={() => setOpenOnWeekends(true)}
+                    >
+                      Sim
+                    </button>
+                    <button 
+                      type="button"
+                      className={!openOnWeekends ? 'active' : ''}
+                      onClick={() => setOpenOnWeekends(false)}
+                    >
+                      Não
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+
+              <button 
+                className="confirm-button" 
+                type="submit"
+                disabled={buttonSubmitDisabled}
               >
-                { !errorImages ? 'Fotos' : 'Fotos não fornecidas'}
-              </label>
-              <div className="images-container">
-                { previewImages.map((image, index) => {
-                  return (
-                    <div key={image} className="image-container">
-                      <button 
-                        onClick={() => handleRemoveImage(index)}
-                      >
-                        <FiX size={24} color="#FF669D" />
-                      </button>
-                      <img src={image} alt="" />
-                    </div>
-                  )
-                })}
-
-                <label htmlFor="image" className="new-image">
-                  <FiPlus size={24} color="#15B6D6" />
-                </label>
-              </div>
-
-              <input multiple onChange={handleSelectImage} type="file" id="image" />
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Visitação</legend>
-            
-            <Textarea 
-              name="instructions"
-              label="Instruções"
-              value={form.instructions}
-              onChange={updateField}
-              labelError="Instruções sobre o orfanato não fornecidas"
-              error={errors.instructions}
-              comment="Máximo de 500 caracteres"
-            />
-
-            <div className="opening-hours-block">
-              <Input 
-                name="openFrom"
-                label="Horário de abertura"
-                value={form.openFrom}
-                onChange={updateField}
-                labelError="Horário não informado"
-                error={errors.openFrom}
-                type="time"
-              />
-
-              <Input 
-                name="openUntil"
-                label="Horário de fechamento"
-                value={form.openUntil}
-                onChange={updateField}
-                labelError="Horário não informado"
-                error={errors.openUntil}
-                type="time"
-              />
-            </div>
-
-            <div className="input-container">
-              <label htmlFor="open_on_weekends">Atende fim de semana</label>
-
-              <div className="button-select">
-                <button
-                  type="button"
-                  className={openOnWeekends ? 'active' : ''}
-                  onClick={() => setOpenOnWeekends(true)}
-                >
-                  Sim
-                </button>
-                <button 
-                  type="button"
-                  className={!openOnWeekends ? 'active' : ''}
-                  onClick={() => setOpenOnWeekends(false)}
-                >
-                  Não
-                </button>
-              </div>
-            </div>
-          </fieldset>
-
-          <button 
-            className="confirm-button" 
-            type="submit"
-            disabled={buttonSubmitDisabled}
-          >
-            Confirmar
-          </button>
-        </form>
-      </main>
-    </div>
+                Confirmar
+              </button>
+            </form>
+          </main>
+        </div>
+      ) : (
+        <Success 
+          title="Orfanato cadastrado!"
+          description={`${form.orphanage} foi cadastrado, agora é só esperar um administrador aceitar o cadastro.`}
+          textButton="Voltar ao mapa com os orfanatos"
+        />
+      )}
+    </>
   );
 }
 
