@@ -15,6 +15,10 @@ function useForm(initialState: any) {
     setErrors({...newErrors});
   }
 
+  function updateForm(obj: any) {
+    setForm({ ...obj });
+  }
+
   function validateFields() {
     const newErrors: any = {};
     
@@ -36,7 +40,7 @@ function useForm(initialState: any) {
   return [
     form, errors,
     updateField, validateFields,
-    hasOneFieldEmpty,
+    hasOneFieldEmpty, updateForm
   ]
 }
 

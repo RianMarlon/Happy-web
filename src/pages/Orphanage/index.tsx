@@ -25,12 +25,12 @@ interface Orphanage {
   about: string;
   whatsapp: string;
   instructions: string;
-  open_from: number,
-  open_until: number,
+  open_from: number;
+  open_until: number;
   open_on_weekends: boolean;
   images: Array<{
     id: number;
-    url: string
+    url: string;
   }>;
 }
 
@@ -46,7 +46,9 @@ function Orphanage() {
   useEffect(() => {
     api.get(`/orphanages/${params.id}`)
       .then((response) => {
-        setOrphanage(response.data);
+        const orphanageData = { ...response.data } as Orphanage;
+
+        setOrphanage({ ...orphanageData });
       });
   }, [params.id]);
 
