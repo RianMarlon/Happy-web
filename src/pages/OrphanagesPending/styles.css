@@ -1,0 +1,170 @@
+#page-orphanages-pending {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+#page-orphanages-pending main {
+  min-height: 100vh;
+  width: 100%;
+  margin-left: 9rem;
+  display: flex;
+  justify-content: center;
+}
+
+#page-orphanages-pending main > div {
+  max-width: 110rem;
+  width: 100%;
+  padding: 3rem 4rem;
+  margin: 1 auto;
+}
+
+#page-orphanages-pending main .orphanages-pending-container {
+  height: calc(100% - 7rem);
+}
+
+#page-orphanages-pending main .orphanages-pending-items {
+  margin-top: 3rem;
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+#page-orphanages-pending main .orphanages-pending-items .orphanage-item + .orphanage-item {
+  margin-top: 3rem;
+}
+
+#page-orphanages-pending main .title-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#page-orphanages-pending main .title-container .line {
+  margin-top: 1rem;
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-border-gray);
+}
+
+#page-orphanages-pending main .title-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.4rem;
+  color: var(--color-text-title);
+}
+
+#page-orphanages-pending main .title-content .quantity-orphanages {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 2.2rem;
+  color: var(--color-text-label);
+}
+
+#page-orphanages-pending main > div .no-results {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 3.4rem;
+  text-align: center;
+  
+  color: var(--color-text-label);
+}
+
+#page-orphanages-pending main .no-results img {
+  width: 7rem;
+}
+
+#page-orphanages-pending main .loading {
+  margin-top: 5rem;
+  align-self: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-orphanages-pending main .loading img {
+  width: 6rem;
+}
+
+@media(min-width: 700px) {
+  #page-orphanages-pending main .title-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #page-orphanages-pending main .title-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 3.4rem;
+    color: var(--color-text-title);
+  }
+  
+  #page-orphanages-pending main .title-content .quantity-orphanages {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 2.2rem;
+    color: var(--color-text-label);
+  }
+}
+
+@media(min-width: 700px) {
+  #page-orphanages-pending main {
+    margin-left: 10rem;
+  }
+
+  #page-orphanages-pending main .title-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #page-orphanages-pending main .title-content h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 3.4rem;
+    color: var(--color-text-title);
+  }
+  
+  #page-orphanages-pending main .title-content .quantity-orphanages {
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 2.2rem;
+    color: var(--color-text-label);
+  }
+
+  #page-orphanages-pending main .no-results img {
+    width: 8rem;
+  }
+}
+
+@media(min-width: 1100px) {
+  #page-orphanages-pending main .orphanages-pending-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3.2rem;
+  }
+
+  #page-orphanages-pending main .orphanages-pending-items .orphanage-item + .orphanage-item {
+    margin-top: 0;
+  }
+
+  #page-orphanages-pending main .no-results img {
+    width: 8rem;
+  }
+
+  #page-orphanages-pending main .loading {
+    margin-top: 6rem;
+  }
+
+  #page-orphanages-pending main .loading img {
+    width: 7rem;
+  }
+}
