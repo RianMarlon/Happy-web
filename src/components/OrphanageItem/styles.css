@@ -1,0 +1,64 @@
+.orphanage-item {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  height: 28rem;
+  background-color: var(--color-text-default);
+  border-radius: 2rem;
+}
+
+.orphanage-item .map-container .leaflet-container {
+  height: 20rem;
+
+  border-bottom: 1px solid var(--color-border-leaflet);
+  border-radius: 2rem;
+}
+
+.orphanage-item .orphanage-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.orphanage-item .orphanage-info > p {
+  color: var(--color-text-title);
+  font-weight: 700;
+}
+
+.orphanage-item .orphanage-info > div {
+  display: flex;
+}
+
+.orphanage-item .orphanage-info a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.6rem;
+  height: 4.8rem;
+  width: 4.8rem;
+  color: var(--color-primary);
+  background-color: var(--color-background-body);
+  transition: 0.2s color linear;
+}
+
+.orphanage-item .orphanage-info a:hover {
+  color: var(--color-text-popup);
+}
+
+.orphanage-item .orphanage-info a + a {
+  margin-left: 1rem;
+}
+
+@media(min-width: 700px) {
+  .orphanage-item {
+    width: 42rem;
+  }
+}
+
+@media(min-width: 1100px) {
+  .orphanage-item {
+    width: 49rem;
+  }
+}
