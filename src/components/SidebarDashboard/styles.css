@@ -1,0 +1,57 @@
+
+aside.app-sidebar-dashboard {
+  position: fixed;
+  height: 100%;
+  width: 9rem;
+  padding: 3.2rem 2.4rem;
+  background: var(--linear-gradient-blue-secondary);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+aside.app-sidebar-dashboard header img {
+  width: 4.8rem;
+}
+
+aside.app-sidebar-dashboard header button,
+aside.app-sidebar-dashboard a + a {
+  margin-top: 1rem;
+}
+
+aside.app-sidebar-dashboard button,
+aside.app-sidebar-dashboard div a {
+  width: 4.8rem;
+  height: 4.8rem;
+
+  border: 0;
+
+  background-color: var(--color-primary);
+  color: var(--color-text-default);
+  border-radius: 1.6rem;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s linear;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+aside.app-sidebar-dashboard div a.active {
+  background-color: var(--color-button-enter);
+  color: var(--color-text-popup);
+}
+
+aside.app-sidebar-dashboard button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+@media(min-width: 600px) {
+  aside.app-sidebar-dashboard {
+    width: 10rem;
+  }
+}
