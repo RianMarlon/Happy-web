@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 
-import Logo from '../../components/Logo';
 import Success from '../../components/Success';
+import SplashScreen from '../../components/SplashScreen';
 
 import './styles.css';
 
@@ -33,11 +33,7 @@ function ConfirmEmail(props: any) {
   }, []);
 
   if (loading) {
-    return (
-      <div className="splash-screen-container">
-        <Logo />
-      </div>
-    );
+    return <SplashScreen />;
   }
 
   return (

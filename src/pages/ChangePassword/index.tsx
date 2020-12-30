@@ -7,6 +7,7 @@ import useForm from '../../hooks/useForm';
 
 import InputPassword from '../../components/InputPassword';
 import Logo from '../../components/Logo';
+import SplashScreen from '../../components/SplashScreen';
 import Success from '../../components/Success';
 
 import './styles.css';
@@ -113,11 +114,7 @@ function ChangePassword(props: any) {
   }
 
   if (loading) {
-    return (
-      <div className="splash-screen-container">
-        <Logo />
-      </div>
-    );
+    return <SplashScreen />;
   }
 
   return (
