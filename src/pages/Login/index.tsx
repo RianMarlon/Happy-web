@@ -1,6 +1,9 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { Link } from 'react-router-dom';
+
+import { TOKEN_KEY } from '../../services/auth';
+import AuthContext from '../../contexts/AuthContext';
 
 import api from '../../services/api';
 import useForm from '../../hooks/useForm';
@@ -12,6 +15,8 @@ import Logo from '../../components/Logo';
 import './styles.css';
 
 function Login() {
+
+  const { checkToken } = useContext(AuthContext);
 
   const initialFields = {
     email: '',
@@ -61,7 +66,15 @@ function Login() {
       .then(async (response) => {
         const { token } = response.data;
 
-        console.log(token);
+        if (rememberMe) {
+          localStorage.setItem(TOKEN_KEY, token);
+        }
+
+        else {
+          sessionStorage.setItem(TOKEN_KEY, token);
+        }
+
+        checkToken();
       })
       .catch(({ response }) => {
         const data = response.data;
