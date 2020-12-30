@@ -114,7 +114,7 @@ function ChangePassword(props: any) {
 
   if (loading) {
     return (
-      <div className="loading-container">
+      <div className="splash-screen-container">
         <Logo />
       </div>
     );
