@@ -61,7 +61,7 @@ function Orphanage() {
       <Sidebar /> 
 
       <main>
-        <h1>{`Perfil do orfanato ${orphanage.name}`}</h1>
+        <h1>{`Perfil ${orphanage.name}`}</h1>
         <div className="orphanage-details">
           <img src={orphanage.images[activeImageIndex].url} alt={orphanage.name} />
 
