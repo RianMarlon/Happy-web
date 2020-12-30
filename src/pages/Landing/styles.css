@@ -20,11 +20,43 @@
   padding: 4rem;
 }
 
+#page-landing .content-wrapper header > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #page-landing .content-wrapper header {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#page-landing .content-wrapper header .access-restricted {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 2rem;
+  padding: 1.3rem 4rem;
+  
+  background-color: var(--color-button-restricted);
+  color: var(--color-text-default);
+  text-decoration: none;
+  border-radius: 2rem;
+
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 3rem;
+
+  transition: all linear 0.2s;
+}
+
+#page-landing .content-wrapper header .access-restricted:hover {
+  background-color: var(--color-button-restricted-hover);
+  color: var(--color-background-popup-link);
 }
 
 #page-landing .content-wrapper header img {
@@ -103,29 +135,6 @@
 }
 
 @media(min-width: 600px) {
-  #page-landing .content-wrapper header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  #page-landing .content-wrapper .image-landing-container img {
-    width: 60%;
-    max-width: 40rem;
-  }
-
-  #page-landing .content-wrapper header .location {
-    display: flex;
-    flex-direction: column;
-    
-    margin-top: 0;
-    margin-left: 4rem;
-    
-    font-size: 2rem;
-    line-height: 3.4rem;
-    text-align: left;
-  }
-
   #page-landing .content-wrapper main h1 {
     font-size: 5rem;
     line-height: 6rem;
@@ -139,6 +148,37 @@
   #page-landing .content-wrapper .enter-app {
     width: 6.5rem;
     height: 6.5rem;
+  }
+}
+
+@media(min-width: 800px) {
+  #page-landing .content-wrapper header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #page-landing .content-wrapper header > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  #page-landing .content-wrapper header .location {
+    display: flex;
+    flex-direction: column;
+    
+    margin-top: 0;
+    margin-left: 5rem;
+    
+    font-size: 2rem;
+    line-height: 3.4rem;
+    text-align: left;
+  }
+  
+  #page-landing .content-wrapper header .access-restricted {
+    margin-top: 0;
   }
 }
 

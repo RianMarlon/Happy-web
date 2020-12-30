@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom';
+
+import AuthContext from '../../contexts/AuthContext';
 
 import logoImg from '../../assets/images/logo-horizontal.svg';
 import landingImg from '../../assets/images/landing.svg';
@@ -8,16 +10,37 @@ import landingImg from '../../assets/images/landing.svg';
 import './styles.css';
 
 function Landing() {
+
+  const { isAdmin } = useContext(AuthContext);
+  
   return (
     <div id="page-landing">
       <div className="content-wrapper">
         <header>
-          <img src={logoImg} alt="Happy" />
-
-          <div className="location">
-            <strong>Morada Nova</strong>
-            <span>Ceará</span>
-          </div>
+          { isAdmin  ? (
+            <>
+              <div>
+                <img src={logoImg} alt="Happy" />
+    
+                <div className="location">
+                  <strong>Morada Nova</strong>
+                  <span>Ceará</span>
+                </div>
+              </div>
+              <Link to="/orphanages-confirmed" className="access-restricted">
+                Acesso restrito
+              </Link>
+            </>
+          ) : (
+            <>
+              <img src={logoImg} alt="Happy" />
+  
+              <div className="location">
+                <strong>Morada Nova</strong>
+                <span>Ceará</span>
+              </div>
+            </>
+          )}
         </header>
 
         <div className="image-landing-container">
