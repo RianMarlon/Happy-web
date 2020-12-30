@@ -36,6 +36,8 @@
   --color-text-error-hover: #F671A2;
   --color-button-enter: #FFD666;
   --color-button-enter-hover: #96FEFF;
+  --color-button-restricted: #12D4E0;
+  --color-button-restricted-hover: #96FEFF;
 
   --box-shadow-popup: 17.2868px 27.6589px 41.4884 rgba(23, 142, 166, 0.16);
 }

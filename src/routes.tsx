@@ -15,6 +15,22 @@ import CreateOrphanage from './pages/CreateOrphanage';
 
 import SplashScreen from './components/SplashScreen';
 
+const AdminRoute = ({component, ...rest}: any) => {
+  const { isValidToken, isAdmin, loading } = useContext(AuthContext);
+
+  if (loading) {
+    return <SplashScreen />;
+  }
+  
+  const routeComponent = (props: any) => {
+    return isValidToken && isAdmin
+      ? React.createElement(component, props)
+      : <Redirect to={{pathname: '/login', state: { from: props.location }}} />
+  }
+  
+  return <Route {...rest} render={routeComponent} />;
+};
+
 const PrivateRoute = ({component, ...rest}: any) => {
   const { isValidToken, loading } = useContext(AuthContext);
 
