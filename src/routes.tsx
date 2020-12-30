@@ -12,6 +12,11 @@ import Landing from './pages/Landing';
 import OrphanagesMap from './pages/OrphanagesMap';
 import Orphanage from './pages/Orphanage';
 import CreateOrphanage from './pages/CreateOrphanage';
+import OrphanagesConfirmed from './pages/OrphanagesConfirmed';
+import OrphanagesPending from './pages/OrphanagesPending';
+import ConfirmOrphanage from './pages/ConfirmOrphanage';
+import DeleteOrphanage from './pages/DeleteOrphanage';
+import EditOrphanage from './pages/EditOrphanage';
 
 import SplashScreen from './components/SplashScreen';
 
@@ -77,6 +82,12 @@ function Routes() {
         <PrivateRoute path="/app" component={OrphanagesMap} />
         <PrivateRoute path="/orphanages/create" component={CreateOrphanage} />
         <PrivateRoute path="/orphanages/:id" exact component={Orphanage} />
+
+        <AdminRoute path="/orphanages-confirmed" component={OrphanagesConfirmed} />
+        <AdminRoute path="/orphanages-pending" component={OrphanagesPending} />
+        <AdminRoute path="/orphanages/confirm/:id" component={ConfirmOrphanage} />
+        <AdminRoute path="/orphanages/delete/:id" component={DeleteOrphanage} />
+        <AdminRoute path="/orphanages/edit/:id" component={EditOrphanage} />
       </Switch>
     </BrowserRouter>
   );
