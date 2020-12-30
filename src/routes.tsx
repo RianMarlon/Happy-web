@@ -51,16 +51,16 @@ function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/confirm-email" component={ConfirmEmail} />
-        <Route path="/forgot-password" component={ForgotPassword} />
-        <Route path="/change-password" component={ChangePassword} />
+        <PublicRoute path="/login" component={Login} />
+        <PublicRoute path="/register" component={Register} />
+        <PublicRoute path="/confirm-email" component={ConfirmEmail} />
+        <PublicRoute path="/forgot-password" component={ForgotPassword} />
+        <PublicRoute path="/change-password" component={ChangePassword} />
 
-        <Route path="/" exact component={Landing} />
-        <Route path="/app" component={OrphanagesMap} />
-        <Route path="/orphanages/create" component={CreateOrphanage} />
-        <Route path="/orphanages/:id" exact component={Orphanage} />
+        <PrivateRoute path="/" exact component={Landing} />
+        <PrivateRoute path="/app" component={OrphanagesMap} />
+        <PrivateRoute path="/orphanages/create" component={CreateOrphanage} />
+        <PrivateRoute path="/orphanages/:id" exact component={Orphanage} />
       </Switch>
     </BrowserRouter>
   );
