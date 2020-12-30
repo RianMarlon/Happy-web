@@ -41,12 +41,12 @@ export const hasTokenValid = async () => {
       }
 
       const response = await api.post('/validate-token', data);
-      const { is_valid_token: isTokenValid, id_admin: isAdmin } = response.data;
+      const { is_valid_token: isTokenValid, is_admin: isAdmin } = response.data;
       
       if (!isTokenValid) {
         sessionStorage.removeItem(TOKEN_KEY);
       }
-
+      
       return {
         isTokenValid,
         isAdmin

@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiPlus, FiArrowRight, FiPower } from 'react-icons/fi';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import Leaflet from 'leaflet';
+
+import { removeToken } from '../../services/auth';
+import AuthContext from '../../contexts/AuthContext';
 
 import api from '../../services/api';
 
@@ -26,21 +29,28 @@ interface Orphanage {
 }
 
 function OrphanagesMap() {
-
+  
+  const { checkToken } = useContext(AuthContext);
+  
   const [myLocation, setMyLocation] = useState({ latitude: -5.1069647, longitude: -38.3761372 });
   const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
-
+  
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords }) => {
       setMyLocation({ latitude: coords.latitude, longitude: coords.longitude });
     });
-
+    
     api.get('/orphanages')
-      .then((response) => {
-        setOrphanages(response.data);
-      });
+    .then((response) => {
+      setOrphanages(response.data);
+    });
   }, []);
-
+  
+  function onClickOff() {
+    removeToken();
+    checkToken();
+  }
+  
   return (
     <div id="page-map">
       <aside>
@@ -58,7 +68,7 @@ function OrphanagesMap() {
             <span>Ceará</span>
           </div>
 
-          <button className="button-logout">
+          <button className="button-logout" onClick={onClickOff}>
             <FiPower size={24} color="#FFF" strokeWidth={3} />
           </button>
         </footer>
