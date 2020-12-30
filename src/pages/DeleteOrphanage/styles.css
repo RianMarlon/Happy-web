@@ -1,0 +1,144 @@
+#page-delete-orphanage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6rem 4rem;
+
+  width: 100vw;
+  min-height: 100vh;
+
+  background-color: var(--color-text-error);
+}
+
+#page-delete-orphanage .image-container img {
+  width: 25rem;
+  max-width: 100%;
+}
+
+#page-delete-orphanage .content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 5rem;
+}
+
+#page-delete-orphanage .content-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-delete-orphanage .content-container h1 {
+  color: var(--color-text-default);
+  font-weight: 800;
+  font-size: 7rem;
+  line-height: 7rem;
+
+  text-align: center;
+}
+
+#page-delete-orphanage .content-container p {
+  margin-top: 3rem;
+
+  color: var(--color-text-default);
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 3.4rem;
+
+  text-align: center;
+}
+
+#page-delete-orphanage .content-container .buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#page-delete-orphanage .content-container .buttons-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2.25rem 4rem;
+  margin-top: 5rem;
+  
+  border: none;
+  border-radius: 2rem;
+  color: var(--color-text-default);
+  font-weight: 800;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  
+  text-align: center;
+  
+  transition: background-color 0.2s linear;
+}
+
+#page-delete-orphanage .content-container .buttons-container button:nth-child(2) {
+  margin-left: 2.5rem;
+}
+
+#page-delete-orphanage .content-container .buttons-container button.confirm-button {
+  background-color: var(--color-text-error-dark);
+}
+
+#page-delete-orphanage .content-container .buttons-container button.cancel-button {
+  background-color: var(--color-text-error);
+  border: 2px solid var(--color-text-error-dark);
+}
+
+#page-delete-orphanage .content-container .buttons-container button.confirm-button:hover,
+#page-delete-orphanage .content-container .buttons-container button.cancel-button:hover {
+  background-color: var(--color-text-error-hover);
+}
+
+@media (min-width: 600px) {
+  #page-delete-orphanage .image-container img {
+    width: 30rem;
+  }
+
+  #page-delete-orphanage .content-container p {
+    width: 80%;
+  }
+
+  #page-delete-orphanage .content-container .buttons-container button:nth-child(2) {
+    margin-left: 3.5rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  #page-delete-orphanage {
+    padding: 6rem 10rem;
+  }
+
+  #page-delete-orphanage {
+    flex-direction: row;
+  }
+  
+  #page-delete-orphanage .image-container {
+    order: 2;
+  }
+
+  #page-delete-orphanage .image-container img {
+    width: 35rem;
+  }
+
+  #page-delete-orphanage .content-container {
+    order: 1;
+    width: 55%;
+    max-width: 80rem;
+    margin-top: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #page-delete-orphanage .content-container > div {
+    margin-left: -11rem;
+    margin-right: 11rem;
+  }
+}
